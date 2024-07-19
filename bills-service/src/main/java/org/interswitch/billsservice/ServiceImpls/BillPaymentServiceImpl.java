@@ -3,6 +3,7 @@ package org.interswitch.billsservice.ServiceImpls;
 import org.interswitch.billsservice.DTOs.AccountDTO;
 import org.interswitch.billsservice.DTOs.CustomerDTO;
 import org.interswitch.billsservice.DTOs.PaymentDTO;
+import org.interswitch.billsservice.DTOs.TransferDTO;
 import org.interswitch.billsservice.Entities.BillCategory;
 import org.interswitch.billsservice.Entities.Biller;
 import org.interswitch.billsservice.Entities.Payment;
@@ -100,5 +101,10 @@ public class BillPaymentServiceImpl implements BillPaymentService {
         paymentRepository.save(payment);
 
         return payment;
+    }
+
+    @Override
+    public String transferFunds(TransferDTO transferDTO) {
+        return "Transferred successfully";
     }
 }

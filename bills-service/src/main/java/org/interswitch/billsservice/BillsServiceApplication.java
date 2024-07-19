@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 //		(scanBasePackages = {"org.interswitch.billsservice", "org.interswitch.onboardingservice"})
 @EnableDiscoveryClient
-@EnableJpaRepositories
+//@EnableJpaRepositories
 @EnableFeignClients
 //		(basePackages = {"org.interswitch.billsservice.Repositories", "org.interswitch.onboardingservice.Repositories"})
 public class BillsServiceApplication {

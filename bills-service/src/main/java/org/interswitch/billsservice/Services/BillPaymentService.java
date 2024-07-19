@@ -1,6 +1,7 @@
 package org.interswitch.billsservice.Services;
 
 import org.interswitch.billsservice.DTOs.PaymentDTO;
+import org.interswitch.billsservice.DTOs.TransferDTO;
 import org.interswitch.billsservice.Entities.BillCategory;
 import org.interswitch.billsservice.Entities.Biller;
 import org.interswitch.billsservice.Entities.Payment;
@@ -16,4 +17,6 @@ public interface BillPaymentService {
     List<Product> getAllProducts();
     List<Product> getProductsByBiller(Long billerId);
     Payment submitPayment(PaymentDTO paymentDTO);
+
+    String transferFunds(TransferDTO transferDTO);
 }
