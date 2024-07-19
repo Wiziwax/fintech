@@ -1,5 +1,6 @@
 package org.interswitch.onboardingservice.ServiceImpls;
 
+import org.interswitch.onboardingservice.DTOs.PaymentDTO;
 import org.interswitch.onboardingservice.Entities.Accounts;
 import org.interswitch.onboardingservice.Entities.Customer;
 import org.interswitch.onboardingservice.Enums.EnumAccountType;
@@ -96,6 +97,19 @@ public class AccountsServiceImpl implements AccountService {
     @Override
     public List<Accounts> findAllCustomerAccounts(String customerNo) {
         return accountRepository.findAllByCustomerNo(customerNo);
+    }
+
+    @Override
+    public String debitAccount(PaymentDTO paymentDTO) {
+        List<Accounts> customerAccounts = accountRepository.findAllByCustomerNo(paymentDTO.getCustomerNo());
+        for (Accounts account : customerAccounts) {
+            if (account.getId().equals(paymentDTO.getAccountId())) {
+                account.setAccountBalance(account.getAccountBalance().subtract(paymentDTO.getAmount()));
+                 accountRepository.save(account);
+                 return "Account Debited";
+            }
+        }
+        return "Account not Found";
     }
 
     private String generateAccountNumber(String phoneNumber) {

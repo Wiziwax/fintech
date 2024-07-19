@@ -19,4 +19,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     List<Customer> findAllByCustomerBVN(String bvn);
     List<Customer> findAllByCustomerNIN(String nin);
 
+
 }

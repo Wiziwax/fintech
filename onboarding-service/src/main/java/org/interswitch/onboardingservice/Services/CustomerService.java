@@ -11,4 +11,6 @@ public interface CustomerService {
     List<Verify> findCustomerByBVN(String bvn);
     List<Verify> findCustomerByNIN(String nin);
     Customer findById(Long customerId);
+
+    Customer findByCustomerNumber(String customerNo);
 }

@@ -1,4 +1,4 @@
-package org.interswitch.billsservice.DTOs;
+package org.interswitch.onboardingservice.DTOs;
 
 import lombok.Data;
 

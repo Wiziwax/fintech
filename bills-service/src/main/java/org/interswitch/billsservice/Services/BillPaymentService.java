@@ -12,6 +12,8 @@ import java.util.List;
 public interface BillPaymentService {
     List<BillCategory> getAllBillCategories();
     List<Biller> getBillersByCategory(Long categoryId);
+    List<Biller> getAllBillers();
+    List<Product> getAllProducts();
     List<Product> getProductsByBiller(Long billerId);
     Payment submitPayment(PaymentDTO paymentDTO);
 }

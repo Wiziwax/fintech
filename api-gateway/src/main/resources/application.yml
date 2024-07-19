@@ -1,34 +1,26 @@
 spring:
   application:
     name: api-gateway
-
   cloud:
     gateway:
       routes:
-        - id: onboarding-service
+        - id: onboarding-service-accounts
+          uri: lb://onboarding-service
+          predicates:
+            - Path=/api/accounts/**
+        - id: onboarding-service-onboarding-register
           uri: lb://onboarding-service
           predicates:
             - Path=/api/onboarding/**
-          filters:
-            - StripPrefix=1
-        - id: login-service
-          uri: lb://login-service
+        - id: onboarding-service-customer
+          uri: lb://onboarding-service
           predicates:
-            - Path=/login/**
-          filters:
-            - StripPrefix=1
-        - id: dashboard-service
-          uri: lb://dashboard-service
-          predicates:
-            - Path=/dashboard/**
-          filters:
-            - StripPrefix=1
-        - id: bills-service
+            - Path=/api/customer/**
+        - id: bills-payment-bills
           uri: lb://bills-service
           predicates:
-            - Path=/bills/**
-          filters:
-            - StripPrefix=1
+            - Path=/api/bills/**
+
 
 server:
   port: 8080
@@ -37,5 +29,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-  instance:
-    hostname: localhost
+
+
+#  instance:
+#    hostname: localhost

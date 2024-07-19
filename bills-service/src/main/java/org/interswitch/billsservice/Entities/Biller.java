@@ -22,11 +22,10 @@ public class Biller {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "bill_category_id", nullable = false)
-    private BillCategory billCategory;
-
     @Column
-    private Long productId;
+    private Long billCategoryId;
+//
+//    @Column
+//    private Long productId;
 
 }

@@ -19,4 +19,9 @@ public class CustomerRestController {
     public Customer getCustomerById(@RequestParam Long customerId){
         return customerService.findById(customerId);
     }
+
+    @GetMapping("getbycustno")
+    public Customer getByCustomerNumber(@RequestParam String customerNo){
+        return customerService.findByCustomerNumber(customerNo);
+    }
 }

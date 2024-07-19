@@ -113,4 +113,9 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer findById(Long customerId){
         return customerRepository.findById(customerId).orElseThrow(()-> new RuntimeException("Could not find customer"));
     }
+
+    @Override
+    public Customer findByCustomerNumber(String customerNo) {
+        return customerRepository.findCustomerByCustomerNo(customerNo);
+    }
 }

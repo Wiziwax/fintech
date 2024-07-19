@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/bills")
+@RequestMapping("/api/bills")
 public class BillPaymentController {
 
     private final BillPaymentService billPaymentService;
@@ -27,9 +27,13 @@ public class BillPaymentController {
         return billPaymentService.getAllBillCategories();
     }
 
-    @GetMapping("/billers")
+    @GetMapping("/billersbycategory")
     public List<Biller> getBillersByCategory(@RequestParam Long categoryId) {
         return billPaymentService.getBillersByCategory(categoryId);
+    }
+    @GetMapping("billers/all")
+    public List<Biller> getAllBillers(){
+        return billPaymentService.getAllBillers();
     }
 
     @GetMapping("/products")
@@ -37,8 +41,15 @@ public class BillPaymentController {
         return billPaymentService.getProductsByBiller(billerId);
     }
 
+    @GetMapping("/products/all")
+    public List<Product> getAllProducts() {
+        return billPaymentService.getAllProducts();
+    }
+
+
     @PostMapping("/pay")
-    public Payment submitPayment(@RequestBody PaymentDTO paymentDTO) {
-        return billPaymentService.submitPayment(paymentDTO);
+    public String submitPayment(@RequestBody PaymentDTO paymentDTO) {
+        billPaymentService.submitPayment(paymentDTO);
+        return "Transaction successful";
     }
 }
